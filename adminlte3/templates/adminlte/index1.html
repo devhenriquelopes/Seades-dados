@@ -1,0 +1,52 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+
+<h3>Testing</h3>
+
+{% if municipio_list %}
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="municipioDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Municipios
+        </button>
+        <div class="dropdown-menu" aria-labelledby="municipioDropdown">
+            {% for municipio in municipio_list %}
+                <a class="dropdown-item" href="{% url 'http:/seades.ba.gov.br/' %}">{{ municipio.ide_municipio }} {{ municipio.nom_municipio }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="button">Inserir Arquivos</button>
+{% else %}
+    <p>Sem Municipios Cadastrados!</p>
+{% endif %}
+
+{% if municipio_list %}
+    <ul>
+    <H1>Municipios:</H1>    
+     {% for municipio in municipio_list %}
+    <div class="row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-7 col-xs-7 col-sm-7">
+            <ul class="list-group">
+
+                <li class="list-group-item ">
+                    <a href="{% url 'http:/seades.ba.gov.br/'}"> 
+                    {{municipio.ide_municipio}} 
+                    {{municipio.nom_municipio }}  
+                </a> <span class="badge"></span>
+                </li>
+            </ul>
+            <br>
+        </div>
+
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    </div>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Sem Municipios Cadastrados!</p>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEADES em Dados</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+
+<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+<link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+
+<link rel="stylesheet" href="dist/css/adminlte.min.css?v=3.2.0">
+
+<link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+
+<link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<script nonce="61121dc3-2200-46a7-84f1-332929fb3ed6">(function(w,d){!function(bt,bu,bv,bw){bt[bv]=bt[bv]||{};bt[bv].executed=[];bt.zaraz={deferred:[],listeners:[]};bt.zaraz.q=[];bt.zaraz._f=function(bx){return function(){var by=Array.prototype.slice.call(arguments);bt.zaraz.q.push({m:bx,a:by})}};for(const bz of["track","set","debug"])bt.zaraz[bz]=bt.zaraz._f(bz);bt.zaraz.init=()=>{var bA=bu.getElementsByTagName(bw)[0],bB=bu.createElement(bw),bC=bu.getElementsByTagName("title")[0];bC&&(bt[bv].t=bu.getElementsByTagName("title")[0].text);bt[bv].x=Math.random();bt[bv].w=bt.screen.width;bt[bv].h=bt.screen.height;bt[bv].j=bt.innerHeight;bt[bv].e=bt.innerWidth;bt[bv].l=bt.location.href;bt[bv].r=bu.referrer;bt[bv].k=bt.screen.colorDepth;bt[bv].n=bu.characterSet;bt[bv].o=(new Date).getTimezoneOffset();if(bt.dataLayer)for(const bG of Object.entries(Object.entries(dataLayer).reduce(((bH,bI)=>({...bH[1],...bI[1]})),{})))zaraz.set(bG[0],bG[1],{scope:"page"});bt[bv].q=[];for(;bt.zaraz.q.length;){const bJ=bt.zaraz.q.shift();bt[bv].q.push(bJ)}bB.defer=!0;for(const bK of[localStorage,sessionStorage])Object.keys(bK||{}).filter((bM=>bM.startsWith("_zaraz_"))).forEach((bL=>{try{bt[bv]["z_"+bL.slice(7)]=JSON.parse(bK.getItem(bL))}catch{bt[bv]["z_"+bL.slice(7)]=bK.getItem(bL)}}));bB.referrerPolicy="origin";bB.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(bt[bv])));bA.parentNode.insertBefore(bB,bA)};["complete","interactive"].includes(bu.readyState)?zaraz.init():bt.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <div class="row">
+    <div class="col-sm-12">
+        <h3>SISA</h3>
+    </div>
+</div>
+
+</div>
+
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+<div class="col-lg-3 col-6">
+
+<div class="small-box bg-info">
+<div class="inner">
+<h3> {{ entregaSISA.0  }}</h3>
+<p>Quilos de Alimentos</p>
+</div>
+<a href="#" class="small-box-footer">... <i class="fas fa-arrow-circle-right"></i></a>
+</div>
+</div>
+
+<div class="col-lg-3 col-6">
+
+<div class="small-box bg-success">
+<div class="inner">
+<h3> {{ entregaSISA.1  }}</h3><sup style="font-size: 20px"></sup></h3>
+<p>Refeicoes</p>
+</div>
+<a href="#" class="small-box-footer">...<i class="fas fa-arrow-circle-right"></i></a>
+</div>
+</div>
+
+<div class="col-lg-3 col-6">
+
+<div class="small-box bg-warning">
+<div class="inner">
+<h3> {{ entregaSISA.2  }}</h3>
+<p>Litros de Leite</p>
+</div>
+
+<a href="#" class="small-box-footer">...<i class="fas fa-arrow-circle-right"></i></a>
+</div>
+</div>
+
+<div class="col-lg-3 col-6">
+
+<div class="small-box bg-danger">
+<div class="inner">
+  <h3> {{ entregaSISA.3 }}</h3>
+<p>Cisternas</p>
+</div>
+
+<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+</div>
+</div>
+
+</div>
+
+<!-- .Second Row. -->
+
+<div class="container">
+    <h1>Pesquise aqui</h1>
+    <form id="filter-form" class="form-inline">
+      <img src="data:image/png;base64,{{ entregaSISA.4  }}" alt="Matplotlib Graph" class="blog-image">
+    </form>
+</div>
+
+ 
+
+</section>
+
+</div>
+
+<footer class="main-footer">
+</footer>
+
+<aside class="control-sidebar control-sidebar-dark">
+
+</aside>
+
+</div>
+
+
+<script src="plugins/jquery/jquery.min.js"></script>
+
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="plugins/chart.js/Chart.min.js"></script>
+
+<script src="plugins/sparklines/sparkline.js"></script>
+
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+
+<script src="dist/js/adminlte.js?v=3.2.0"></script>
+
+<script src="dist/js/demo.js"></script>
+
+<script src="dist/js/pages/dashboard.js"></script>
+</body>
+</html>
+{% endblock %}

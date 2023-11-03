@@ -1,0 +1,28 @@
+{% load extra_tags %}
+{% if page_obj.has_other_pages %}
+	<ul class="pagination">
+		{% if page_obj.has_previous %}
+			<li><a href="{% add_get_param p=page_obj.previous_page_number %}">«</a></li>
+		{% endif %}
+
+		{% for indice in page_obj.paginator.page_range %}
+
+			{% if page_obj|exibe_pagina:indice %}
+				<li class="{% if indice == page_obj.number %}active{% endif %}">
+					<a href="{% add_get_param p=indice %}">
+						{% if page_obj|exibe_separador_pagina:indice %}
+							...
+						{% else %}
+							{{ indice }}
+						{% endif %}
+					</a>
+				</li>
+			{% endif %}
+
+		{% endfor %}
+
+		{% if page_obj.has_next %}
+			<li><a href="{% add_get_param p=page_obj.next_page_number %}">»</a></li>
+		{% endif %}
+	</ul>
+{% endif %}

@@ -1,0 +1,109 @@
+{% extends 'adminlte/base.html' %}
+
+{% block content %}
+
+<H1>Municipios:</H1> 
+
+{% if municipio_list %}
+
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownButton">
+      Selecione um item
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu custom-margin" id="municipio-dropdown">
+      {% for municipio in municipio_list %}
+        <li><a href="#" class="municipio-link" data-nome="{{ municipio.nom_municipio }}" data-id="{{ municipio.ide_municipio }}" onclick="updateButtonContent(this)">{{ municipio.nom_municipio }} (ID: {{ municipio.ide_municipio }})</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <br>
+  <button class="btn btn-primary" type="button" id="confirmar-municipio-btn">Confirmar Municipio</button>
+     
+<br>
+<br>    
+<input type="file" id="fileInput" style="display: none;">
+<button class="btn btn-primary" type="button" id="fileSelectButton">
+  Inserir Arquivos
+</button>
+<span id="selectedFilePlaceholder" class="show-selected-file">Show files.pdf</span>
+
+
+
+<input type="submit" id="fileSubmit" style="display: none;">
+<button class="btn btn-success submit-button" onclick="submitForm()">Enviar arquivos</button>
+ 
+{% else %}
+    <p>Sem Municipios Cadastrados!</p>
+{% endif %}
+
+<br>
+<br>
+{% if municipio_list %}
+    <ul>
+   
+     {% for municipio in municipio_list %}
+    <div class="row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div class="col-md-7 col-xs-7 col-sm-7">
+            <ul class="list-group">
+
+                <li class="list-group-item ">
+                    <a href="{% url 'http:/seades.ba.gov.br/'}"> 
+                    {{municipio.ide_municipio}} 
+                    {{municipio.nom_municipio}}  
+                </a> <span class="badge"></span>
+                </li>
+            </ul>
+            <br>
+        </div>
+
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    </div>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Sem Municipios Cadastrados!</p>
+{% endif %}
+
+<script>
+    function updateButtonContent(clickedLink) {
+      const dropdownButton = document.getElementById('confirmar-municipio-btn');
+      const nomeMunicipio = clickedLink.dataset.nome;
+      const idMunicipio = clickedLink.dataset.id;
+      dropdownButton.innerHTML = idMunicipio;
+    }
+
+    
+// Function to display the selected file name
+function displaySelectedFile() {
+  const fileInput = document.getElementById('fileInput');
+  const selectedFilePlaceholder = document.getElementById('selectedFilePlaceholder');
+
+  if (fileInput.files.length > 0) {
+    const selectedFileName = fileInput.files[0].name;
+    selectedFilePlaceholder.textContent = selectedFileName;
+   
+  } else {
+    // If no file is selected, display the default placeholder text
+    selectedFilePlaceholder.textContent = 'Show files.pdf';
+  }
+}
+
+// Function to open file input when the button is clicked
+function openFileInput() {
+  document.getElementById('fileInput').click();
+}
+
+// Attach event listeners
+document.getElementById('fileInput').addEventListener('change', displaySelectedFile);
+document.getElementById('fileSelectButton').addEventListener('click', openFileInput);
+
+  </script>
+  
+  
+
+{% endblock %}
+
+
+
